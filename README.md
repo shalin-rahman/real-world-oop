@@ -353,6 +353,6 @@ FoodTiger's journey from chaos to control demonstrates a fundamental truth: **Ob
 
 *This case study demonstrates that the best code emerges when we deeply understand the real-world problems we're solving. Object-Oriented Programming isn't just a technical paradigm—it's a way of thinking that mirrors how we naturally organize complex systems in the real world.*
 
-""" Code Note:
+### Code Note:
 > "The repository code likely implements a more comprehensive real business workflow. But in this document, highlighted the key conceptual similarities"
 
