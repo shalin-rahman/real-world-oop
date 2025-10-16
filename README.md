@@ -112,10 +112,9 @@ As they mapped out their real-world solution, developer Amit exclaimed: "Wait! W
 ### The Natural Evolution
 
 **Whiteboard Design:**
-[Customer] → places → [Order] → handled by → [Restaurant] → delivered by → [Rider]
-[Customer] → [Mr. Rahman] places → [Order #123] → handled by → [Spice Garden] → delivered by → [Abul Rider]
-   ^              ^                      ^                           ^                              ^
-Class          Object                 Object                      Object                         Object
+- [Customer] → places → [Order] → handled by → [Restaurant] → delivered by → [Rider]
+- [Customer] → [Mr. Rahman] places → [Order #123] → handled by → [Spice Garden] → delivered by → [Abul Rider]
+- Class      → Object (Customer)   → Object (Order) →          → Object (Restuarant) →         → Object (Rider)
 
 **Becomes OOP Structure:**
 ```java
