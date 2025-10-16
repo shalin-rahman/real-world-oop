@@ -312,7 +312,9 @@ The best software doesn't impose artificial structure on a business—it reveals
 
 #### Inheritance vs Composition:
 - **Inheritance**: "IS-A" (Rider IS A Person)
+   - Inheritance allows a new class (subclass) to inherit properties and methods from an existing class (superclass). This creates an "is-a" relationship. For example, an Rider class can inherit from a Person class, indicating that an rider "is a" person.
 - **Composition**: "HAS-A" (Restaurant HAS A Menu)
+   - Composition involves creating classes that include instances of other classes, forming a "has-a" relationship. For example, a Person class can have an Address object, indicating that a person "has an" address.
 
 ### Tips 
 
