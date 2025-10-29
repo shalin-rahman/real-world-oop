@@ -1,0 +1,827 @@
+Java Programming Complete Guide
+
+Table of Contents
+
+1. Introduction to Java
+2. How Java Works
+3. Installation & Setup
+4. First Java Program
+5. Java Syntax Fundamentals
+6. Object-Oriented Programming Part 1
+7. Object-Oriented Programming Part 2
+
+Introduction to Java
+
+What is Java and Why Java?
+
+Java is an object-oriented, platform-independent programming language created by Sun Microsystems (now Oracle) in 1995.
+
+Why Java?
+
+· ✅ Write Once, Run Anywhere (WORA)
+· ✅ Strong memory management
+· ✅ Rich ecosystem and libraries
+· ✅ High performance
+· ✅ Security features
+· ✅ Multithreading support
+
+What Can We Do with Java?
+
+· 🌐 Web applications
+· 📱 Mobile apps (Android)
+· 💼 Enterprise software
+· 🖥️ Desktop applications
+· 📊 Big data technologies
+· 🔬 Scientific applications
+· 🎮 Gaming
+
+How Java Works
+
+Compilation vs Interpretation
+
+Java is both compiled and interpreted:
+
+1. Compilation: .java → .class (bytecode)
+2. Interpretation: JVM interprets bytecode to machine code
+
+Differences:
+
+· Compiled: Faster execution, platform-specific
+· Interpreted: Slower, platform-independent
+
+JVM and JRE
+
+· JVM (Java Virtual Machine): Executes Java bytecode
+· JRE (Java Runtime Environment): JVM + libraries to run Java apps
+· JDK (Java Development Kit): JRE + development tools
+
+Detailed Compilation & Execution Process
+
+```java
+// Step 1: Write Source Code (HelloWorld.java)
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello Java World!");
+        int result = calculate(5, 3);
+        System.out.println("Result: " + result);
+    }
+    
+    public static int calculate(int a, int b) {
+        return a * b + 10;
+    }
+}
+
+/*
+Step 2: Compilation
+javac HelloWorld.java → HelloWorld.class (bytecode)
+
+Step 3: Execution
+java HelloWorld → JVM loads, verifies, and executes bytecode
+
+JVM Components:
+1. Class Loader - loads .class files
+2. Bytecode Verifier - checks code safety
+3. Interpreter/JIT - converts bytecode to machine code
+4. Runtime Data Areas - method area, heap, stack, PC registers
+5. Garbage Collector - automatic memory management
+*/
+```
+
+Installation & Setup
+
+JDK Installation
+
+1. Download JDK from Oracle
+2. Install and set JAVA_HOME environment variable
+3. Verify: java -version
+
+IDE Setup (Eclipse)
+
+1. Download Eclipse from eclipse.org
+2. Choose "Eclipse IDE for Java Developers"
+3. Install and create workspace
+
+First Java Program
+
+Hello World Program
+
+```java
+// Package declaration
+package com.example.firstprogram;
+
+// Import statements (none needed for basic program)
+
+// Class declaration
+public class HelloWorld {
+    
+    // Main method - program entry point
+    public static void main(String[] args) {
+        // Print statement
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+Java Main Method
+
+```java
+public static void main(String[] args)
+```
+
+· public: Accessible from anywhere
+· static: Can be called without creating object
+· void: Doesn't return anything
+· main: Method name
+· String[] args: Command-line arguments
+
+Java Syntax Fundamentals
+
+Package Declaration & Import
+
+```java
+package com.mycompany.myapp;  // Package declaration
+
+import java.util.ArrayList;   // Import specific class
+import java.util.*;           // Import entire package
+```
+
+Class, Fields, Methods
+
+```java
+public class Car {
+    // Fields (instance variables)
+    private String color;
+    private int speed;
+    
+    // Constructor
+    public Car(String color) {
+        this.color = color;
+        this.speed = 0;
+    }
+    
+    // Method
+    public void accelerate(int increment) {
+        speed += increment;
+    }
+}
+```
+
+Comments
+
+```java
+// Single-line comment
+
+/*
+ Multi-line
+ comment
+*/
+
+/**
+ * Javadoc comment
+ * @param name the name to display
+ */
+```
+
+Primitive Data Types - Deep Dive
+
+```java
+public class PrimitiveTypesDetail {
+    public static void main(String[] args) {
+        // Integer Types - different sizes and ranges
+        byte byteValue = 127;           // 8-bit, range: -128 to 127
+        short shortValue = 32767;       // 16-bit, range: -32,768 to 32,767
+        int intValue = 2147483647;      // 32-bit, range: -2^31 to 2^31-1
+        long longValue = 9223372036854775807L; // 64-bit, suffix 'L' required
+        
+        // Floating Point Types - precision differences
+        float floatValue = 3.14159f;    // 32-bit, 7 decimal digits precision
+        double doubleValue = 3.141592653589793; // 64-bit, 15 decimal digits
+        
+        // Character Type - Unicode support
+        char charValue = 'A';           // 16-bit Unicode
+        char unicodeChar = '\u0041';    // Unicode for 'A'
+        char heartSymbol = '❤';         // Can store emoji characters
+        
+        // Boolean Type
+        boolean booleanValue = true;    // Only true or false
+    }
+}
+```
+
+Strings and Wrapper Classes
+
+```java
+// String (not primitive, but commonly used)
+String name = "John";
+String message = "Hello " + name;
+
+// Wrapper classes
+Integer number = Integer.valueOf(100);
+Double price = Double.valueOf(19.99);
+Boolean flag = Boolean.TRUE;
+
+// Autoboxing
+Integer autoBoxed = 42;        // int to Integer
+int autoUnboxed = autoBoxed;   // Integer to int
+```
+
+Operators - Comprehensive Examples
+
+```java
+public class OperatorsDeepDive {
+    public static void main(String[] args) {
+        // Arithmetic Operators
+        int a = 15, b = 4;
+        System.out.println("a + b = " + (a + b));  // 19
+        System.out.println("a - b = " + (a - b));  // 11
+        System.out.println("a * b = " + (a * b));  // 60
+        System.out.println("a / b = " + (a / b));  // 3 (integer division)
+        System.out.println("a % b = " + (a % b));  // 3 (remainder)
+        
+        // Unary Operators
+        int x = 5;
+        System.out.println("Original x: " + x);        // 5
+        System.out.println("Post-increment: " + x++);  // 5 (then x becomes 6)
+        System.out.println("Pre-increment: " + ++x);   // 7
+        
+        // Relational Operators
+        System.out.println("a == b: " + (a == b));     // false
+        System.out.println("a != b: " + (a != b));     // true
+        
+        // Logical Operators
+        boolean condition1 = true, condition2 = false;
+        System.out.println("AND: " + (condition1 && condition2)); // false
+        System.out.println("OR: " + (condition1 || condition2));  // true
+        
+        // Ternary Operator
+        int age = 20;
+        String canVote = (age >= 18) ? "Yes, can vote" : "No, cannot vote";
+        System.out.println(canVote); // "Yes, can vote"
+    }
+}
+```
+
+Control Flow - Detailed Examples
+
+```java
+public class ControlFlowExamples {
+    public static void main(String[] args) {
+        // Grading system
+        int score = 85;
+        char grade;
+        
+        if (score >= 90) {
+            grade = 'A';
+        } else if (score >= 80) {
+            grade = 'B';
+        } else if (score >= 70) {
+            grade = 'C';
+        } else if (score >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+        System.out.println("Score: " + score + ", Grade: " + grade);
+    }
+}
+```
+
+Looping
+
+```java
+public class LoopingExample {
+    public static void main(String[] args) {
+        // For loop
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Count: " + i);
+        }
+        
+        // While loop
+        int j = 0;
+        while (j < 5) {
+            System.out.println("While count: " + j);
+            j++;
+        }
+        
+        // Do-while loop
+        int k = 0;
+        do {
+            System.out.println("Do-while count: " + k);
+            k++;
+        } while (k < 5);
+        
+        // Enhanced for loop (for arrays/collections)
+        int[] numbers = {1, 2, 3, 4, 5};
+        for (int num : numbers) {
+            System.out.println("Number: " + num);
+        }
+    }
+}
+```
+
+Loop Control Statements
+
+```java
+public class LoopControlDeepDive {
+    public static void main(String[] args) {
+        // Break with label - breaking outer loop
+        System.out.println("Break with label:");
+        outerLoop: 
+        for (int i = 1; i <= 3; i++) {
+            for (int j = 1; j <= 3; j++) {
+                if (i == 2 && j == 2) {
+                    break outerLoop; // Breaks out of both loops
+                }
+                System.out.println("i=" + i + ", j=" + j);
+            }
+        }
+        
+        // Continue example - skip even numbers
+        System.out.println("\nOdd numbers from 1-10:");
+        for (int i = 1; i <= 10; i++) {
+            if (i % 2 == 0) {
+                continue; // Skip even numbers
+            }
+            System.out.print(i + " ");
+        }
+    }
+}
+```
+
+Arrays - Multi-dimensional and Operations
+
+```java
+import java.util.Arrays;
+
+public class ArraysDeepDive {
+    public static void main(String[] args) {
+        // 1D Array operations
+        int[] numbers = {5, 2, 8, 1, 9};
+        
+        // Sorting
+        Arrays.sort(numbers);
+        System.out.println("Sorted: " + Arrays.toString(numbers));
+        
+        // 2D Array - matrix operations
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        
+        System.out.println("\n2D Array (Matrix):");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+Switch Case
+
+```java
+public class SwitchExample {
+    public static void main(String[] args) {
+        int day = 3;
+        String dayName;
+        
+        switch (day) {
+            case 1:
+                dayName = "Monday";
+                break;
+            case 2:
+                dayName = "Tuesday";
+                break;
+            case 3:
+                dayName = "Wednesday";
+                break;
+            case 4:
+                dayName = "Thursday";
+                break;
+            case 5:
+                dayName = "Friday";
+                break;
+            default:
+                dayName = "Weekend";
+        }
+        
+        System.out.println(dayName);  // Wednesday
+        
+        // Enhanced switch (Java 14+)
+        String result = switch (day) {
+            case 1, 2, 3, 4, 5 -> "Weekday";
+            case 6, 7 -> "Weekend";
+            default -> "Invalid";
+        };
+    }
+}
+```
+
+Object-Oriented Programming Part 1
+
+Procedural vs OOP
+
+```java
+// Procedural approach
+public class ProceduralExample {
+    public static void calculateArea(int length, int width) {
+        int area = length * width;
+        System.out.println("Area: " + area);
+    }
+}
+
+// OOP approach
+public class Rectangle {
+    private int length;
+    private int width;
+    
+    public Rectangle(int length, int width) {
+        this.length = length;
+        this.width = width;
+    }
+    
+    public int calculateArea() {
+        return length * width;
+    }
+}
+```
+
+Classes and Objects
+
+```java
+// Class definition
+public class BankAccount {
+    // Fields
+    private String accountNumber;
+    private double balance;
+    
+    // Constructor
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+    
+    // Methods
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+}
+
+// Using the class
+public class BankApp {
+    public static void main(String[] args) {
+        // Creating objects
+        BankAccount account1 = new BankAccount("12345", 1000.0);
+        account1.deposit(200.0);
+        System.out.println("Balance: " + account1.getBalance());
+    }
+}
+```
+
+Inheritance with Practical Scenario
+
+```java
+// Base class
+class Employee {
+    protected String name;
+    protected double baseSalary;
+    protected int employeeId;
+    
+    public Employee(String name, double baseSalary, int employeeId) {
+        this.name = name;
+        this.baseSalary = baseSalary;
+        this.employeeId = employeeId;
+    }
+    
+    public double calculateSalary() {
+        return baseSalary;
+    }
+    
+    public void displayInfo() {
+        System.out.println("ID: " + employeeId + ", Name: " + name + 
+                          ", Salary: $" + calculateSalary());
+    }
+}
+
+// Derived class 1
+class Manager extends Employee {
+    private double bonus;
+    
+    public Manager(String name, double baseSalary, int employeeId, double bonus) {
+        super(name, baseSalary, employeeId); // Call parent constructor
+        this.bonus = bonus;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return baseSalary + bonus; // Override salary calculation
+    }
+}
+
+// Derived class 2
+class Developer extends Employee {
+    private String programmingLanguage;
+    
+    public Developer(String name, double baseSalary, int employeeId, String language) {
+        super(name, baseSalary, employeeId);
+        this.programmingLanguage = language;
+    }
+    
+    @Override
+    public double calculateSalary() {
+        return baseSalary * 1.1; // 10% extra for developers
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Employee emp1 = new Manager("John", 50000, 101, 10000);
+        Employee emp2 = new Developer("Sarah", 60000, 102, "Java");
+        
+        // Polymorphism in action
+        Employee[] employees = {emp1, emp2};
+        
+        for (Employee emp : employees) {
+            emp.displayInfo(); // Different behavior based on actual object type
+        }
+    }
+}
+```
+
+Interfaces
+
+```java
+// Interface definition
+interface Drawable {
+    void draw();        // Abstract method
+    default void resize() {  // Default method
+        System.out.println("Resizing...");
+    }
+}
+
+interface Colorable {
+    void setColor(String color);
+}
+
+// Class implementing interface
+class Circle implements Drawable, Colorable {
+    private String color;
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+    
+    @Override
+    public void setColor(String color) {
+        this.color = color;
+        System.out.println("Color set to: " + color);
+    }
+}
+```
+
+Abstract Classes
+
+```java
+// Abstract class
+abstract class Shape {
+    protected String color;
+    
+    public Shape(String color) {
+        this.color = color;
+    }
+    
+    // Abstract method (must be implemented by subclasses)
+    public abstract double calculateArea();
+    
+    // Concrete method
+    public void display() {
+        System.out.println("This is a " + color + " shape");
+    }
+}
+
+// Concrete class
+class Square extends Shape {
+    private double side;
+    
+    public Square(String color, double side) {
+        super(color);
+        this.side = side;
+    }
+    
+    @Override
+    public double calculateArea() {
+        return side * side;
+    }
+}
+```
+
+Object-Oriented Programming Part 2
+
+Polymorphism - Compile Time vs Runtime
+
+```java
+class Calculator {
+    // Compile-time polymorphism (Method Overloading)
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    public double add(double a, double b) {
+        return a + b;
+    }
+    
+    public String add(String a, String b) {
+        return a + b;
+    }
+}
+
+class ScientificCalculator extends Calculator {
+    // Runtime polymorphism (Method Overriding)
+    @Override
+    public int add(int a, int b) {
+        System.out.println("Using scientific addition");
+        return super.add(a, b); // Call parent method
+    }
+}
+
+public class PolymorphismDeepDive {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        
+        // Method overloading examples
+        System.out.println("int add: " + calc.add(5, 10));
+        System.out.println("double add: " + calc.add(5.5, 10.5));
+        System.out.println("String add: " + calc.add("Hello", " World"));
+        
+        // Runtime polymorphism
+        Calculator sciCalc = new ScientificCalculator();
+        System.out.println("Scientific add: " + sciCalc.add(5, 10));
+    }
+}
+```
+
+Method Overloading vs Overriding
+
+```java
+class Calculator {
+    // Method overloading (same name, different parameters)
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    public double add(double a, double b) {
+        return a + b;
+    }
+    
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+class AdvancedCalculator extends Calculator {
+    // Method overriding (same signature, different implementation)
+    @Override
+    public int add(int a, int b) {
+        System.out.println("Using advanced addition");
+        return a + b;
+    }
+}
+```
+
+Encapsulation - Complete Example
+
+```java
+public class BankAccount {
+    // Private fields - data hiding
+    private String accountNumber;
+    private String accountHolder;
+    private double balance;
+    private String password;
+    private boolean isActive;
+    
+    // Constructor
+    public BankAccount(String accountNumber, String accountHolder, 
+                      double initialBalance, String password) {
+        this.accountNumber = accountNumber;
+        this.accountHolder = accountHolder;
+        this.balance = initialBalance;
+        this.password = password;
+        this.isActive = true;
+    }
+    
+    // Public getters - controlled access
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+    
+    public boolean isActive() {
+        return isActive;
+    }
+    
+    // No direct setter for balance - controlled through methods
+    public boolean deposit(double amount) {
+        if (amount > 0 && isActive) {
+            balance += amount;
+            System.out.println("Deposited: $" + amount);
+            return true;
+        }
+        System.out.println("Invalid deposit amount or inactive account");
+        return false;
+    }
+    
+    public boolean withdraw(double amount, String password) {
+        if (authenticate(password) && amount > 0 && amount <= balance && isActive) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+            return true;
+        }
+        System.out.println("Withdrawal failed");
+        return false;
+    }
+    
+    // Private helper method - internal use only
+    private boolean authenticate(String inputPassword) {
+        return this.password.equals(inputPassword);
+    }
+}
+
+public class EncapsulationExample {
+    public static void main(String[] args) {
+        BankAccount account1 = new BankAccount("123456", "John Doe", 1000.0, "secret123");
+        
+        // Can't access private fields directly:
+        // account1.balance = 1000000; // Compilation error
+        
+        // Must use public methods
+        account1.deposit(200.0);
+        account1.withdraw(100.0, "secret123");
+        
+        System.out.println("Account balance: $" + account1.getBalance());
+    }
+}
+```
+
+Pass by Value vs Pass by Reference
+
+```java
+public class PassByExample {
+    public static void main(String[] args) {
+        // Primitive types - pass by value
+        int x = 10;
+        modifyPrimitive(x);
+        System.out.println("After modifyPrimitive: " + x); // 10 (unchanged)
+        
+        // Object references - pass by value (reference copy)
+        int[] arr = {1, 2, 3};
+        modifyArray(arr);
+        System.out.println("After modifyArray: " + arr[0]); // 100 (changed)
+        
+        // String (immutable) - appears like pass by value
+        String str = "Hello";
+        modifyString(str);
+        System.out.println("After modifyString: " + str); // Hello (unchanged)
+    }
+    
+    public static void modifyPrimitive(int num) {
+        num = 100;  // Changes only local copy
+    }
+    
+    public static void modifyArray(int[] array) {
+        array[0] = 100;  // Changes the original array
+    }
+    
+    public static void modifyString(String text) {
+        text = "Modified";  // Creates new String object
+    }
+}
+```
+
+Key Points to Remember
+
+1. Java is platform-independent through bytecode and JVM
+2. Everything in Java is object-oriented (except primitives)
+3. Main method is the entry point of any Java application
+4. Use access modifiers properly for encapsulation
+5. Inheritance enables code reuse
+6. Polymorphism allows flexible code
+7. Java always passes by value
+
+This comprehensive guide covers all fundamental Java concepts with practical examples to help you build a strong programming foundation!
